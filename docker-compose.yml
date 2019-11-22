@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  aws-go:
+    build: 
+      context: ./aws-go
+      dockerfile: Dockerfile
+    volumes:
+      - ./go:/go
+      - .:/root/workspace
+      - ~/.gitconfig:/root/.gitconfig
+    environment:
+      - AWS_ACCESS_KEY_ID=your access key
+      - AWS_SECRET_ACCESS_KEY=your secret key
+      - AWS_DEFAULT_REGION=ap-northeast-1
+      - AWS_REGION=ap-northeast-1
+      - S3_BACKET_NAME=your s3 backet name
+      - FUNC_NAME=your function name
+    command: tail -f > /dev/null
