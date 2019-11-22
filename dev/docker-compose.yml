@@ -14,5 +14,5 @@ services:
       - AWS_DEFAULT_REGION=ap-northeast-1
       - AWS_REGION=ap-northeast-1
       - S3_BACKET_NAME=your s3 backet name
-      - FUNC_NAME=your function name
+      - STACK_NAME=your function name
     command: tail -f > /dev/null

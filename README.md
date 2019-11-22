@@ -10,7 +10,7 @@
 * AWS_DEFAULT_REGION : デフォルトリージョン
 * AWS_REGION : リージョン
 * S3_BACKET_NAME : S3バケット名
-* FUNC_NAME : Lambda関数名
+* STACK_NAME : CloudFormation stack名
 
 VSCode Remote Containersで、本プロジェクトを開くと、Docker Composeを使用して、Dockerコンテナが起動する。  
 以降、Dockerコンテナで作業する。

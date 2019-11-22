@@ -13,4 +13,4 @@ package:
 	sam package --template-file template.yaml --output-template-file output-template.yaml --s3-bucket ${S3_BACKET_NAME}
 
 deploy:
-	sam deploy --template-file output-template.yaml --stack-name ${FUNC_NAME} --capabilities CAPABILITY_IAM
+	sam deploy --template-file output-template.yaml --stack-name ${STACK_NAME} --capabilities CAPABILITY_IAM
