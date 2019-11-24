@@ -27,7 +27,7 @@ Resources:
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
         Variables:
           S3_BACKET: cupper-sam-template-store
-          SLACK_WEB_HOOK: https://hooks.slack.com/services/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
+          SLACK_WEB_HOOK: https://hooks.slack.com/services/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
       Policies:
       - Version: '2012-10-17'
         Statement:

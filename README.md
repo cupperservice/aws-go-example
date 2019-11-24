@@ -15,7 +15,7 @@
 VSCode Remote Containersで、本プロジェクトを開くと、Docker Composeを使用して、Dockerコンテナが起動する。  
 以降、Dockerコンテナで作業する。
 
------
+## 構築手順
 
 1. テンプレートの作成
 以下のコマンドで、雛形を作成する。
@@ -52,7 +52,8 @@ deploy:
 ```
 
 3. Lambda関数の作成
-main.goを修正する。
+main.goを修正する。  
+`source/main.go` - 編集したもの
 
 4. 必要なライブラリを取得
 ```
@@ -62,6 +63,12 @@ main.goを修正する。
 ```
 
 4. template.yamlの編集
+以下を修正する。
+* Path - /hello/{name}
+* Variables - 環境変数
+  * S3_BACKET - メッセージを保管するS3バケット名
+  * SLACK_WEB_HOOK - メッセージを通知するSlackのWebHook URL
+* Policies - S3バケットへの書き込み権限を指定
 
 5. S3バケットの作成
 CloudFormationのテンプレートを保存するS3バケットを作成する。
@@ -88,4 +95,16 @@ sam package --template-file template.yaml --output-template-file output-template
 Uploading to 8146823f7fd54ea7609a71b3fc649766  1173 / 1173.0  (100.00%)Successfully packaged artifacts and wrote output template to file output-template.yaml.
 Execute the following command to deploy the packaged template
 sam deploy --template-file /go/src/github.com/yumemi-kkawashima/sample-app/output-template.yaml --stack-name <YOUR STACK NAME>
+```
+
+7. Lambda関数をを配備
+以下のコマンドで作成したLambda関数を配備する。
+
+```
+# make deploy
+sam deploy --template-file output-template.yaml --stack-name cupper-func --capabilities CAPABILITY_IAM
+
+Waiting for changeset to be created..
+Waiting for stack create/update to complete
+Successfully created/updated stack - cupper-func
 ```
